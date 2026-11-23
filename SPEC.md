@@ -42,6 +42,7 @@ Anyone with a family tree file who wants a printable poster. First real test cas
 - Connector lines re-route as boxes move.
 - Snap and alignment guides; nudge with arrow keys; undo and redo.
 - Hide or show a person or a whole branch (hidden means not printed, never deleted from the data).
+- Hidden branches remain visible and dimmed in the editor so they can be restored, but leave no “+N more” marker in the poster, preview, or exports.
 - Edit display text on a box without changing the source data (e.g. shorten a long name).
 - Add free text (title, dedication, date) and images (a family crest or photo).
 
@@ -123,7 +124,6 @@ The 146-person, 5-generation test tree imports, auto-fits on A3, can be hand-adj
 - Konva or Fabric.js (decided by the spike)?
 - How much of Topola to reuse: parser only, or its layout too?
 - Which chart types after descendants: ancestors, hourglass, fan?
-- Should hidden branches leave a small "+N more" marker on the print?
 - Photos in boxes in v1, or later?
 - Which artistic styles after the leaf tree, and in what order (crown tree, ornamental fan and night sky are pictured; botanical vine is another idea)?
 - Can a user build a style from parts in the app, or only by editing a style file?
