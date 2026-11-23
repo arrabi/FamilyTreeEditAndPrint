@@ -50,7 +50,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid #2489a0; outline-offs
 .paper { fill: #fffdf8; }
 .poster-frame rect { fill: none; stroke: #b99a50; stroke-width: 2; }
 .box-link { fill: none; stroke: #89744b; stroke-width: 2; }
-.branch { fill: none; stroke: #a57a42; stroke-width: 5; stroke-linecap: round; }
+.branch { fill: #a57a42; }
 .box-person rect { fill: #fffdf5; stroke: #876c36; stroke-width: 1.6; }
 .person { cursor: grab; }
 .person.dragging { cursor: grabbing; }

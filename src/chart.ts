@@ -147,9 +147,9 @@ function escapeXml(value: string): string {
 
 function leafPath(from: Point, to: Point, width: number): string {
   const direction = from.x > to.x ? -1 : 1;
-  const bow = Math.abs(from.x - to.x) * 0.08;
-  const perpendicular = Math.max(0.8, width / 5);
-  return `M ${from.x} ${from.y} C ${from.x + direction * (Math.abs(from.x - to.x) * 0.48)} ${from.y}, ${to.x - direction * (Math.abs(from.x - to.x) * 0.48)} ${to.y - bow * 0.22}, ${to.x} ${to.y} M ${from.x} ${from.y + perpendicular} C ${from.x + direction * (Math.abs(from.x - to.x) * 0.48)} ${from.y + perpendicular}, ${to.x - direction * (Math.abs(from.x - to.x) * 0.48)} ${to.y - bow * 0.22 + perpendicular * 0.25}, ${to.x} ${to.y}`;
+  const distance = Math.abs(from.x - to.x);
+  const rootHalfWidth = Math.max(1.5, width / 2);
+  return `M ${from.x} ${from.y - rootHalfWidth} C ${from.x + direction * distance * 0.48} ${from.y}, ${to.x - direction * distance * 0.48} ${to.y - 0.8}, ${to.x} ${to.y - 0.8} C ${to.x - direction * distance * 0.48} ${to.y + 0.8}, ${from.x + direction * distance * 0.48} ${from.y}, ${from.x} ${from.y + rootHalfWidth} Z`;
 }
 
 export function renderChartSvg(model: ChartModel, style: ChartStyle): string {
@@ -163,7 +163,8 @@ export function renderChartSvg(model: ChartModel, style: ChartStyle): string {
         const middleY = (from.y + to.y) / 2;
         return `<path d="M ${from.x} ${from.y + 22} V ${middleY} H ${to.x} V ${to.y - 22}" class="box-link"/>`;
       }
-      return `<path d="${leafPath(from, to, Math.max(3, 10 - (depthOf(person, new Map(model.people.map((entry) => [entry.id, entry]))) * 1.5)))}" class="branch"/>`;
+      const branchWidth = Math.min(16, 2 + descendants(model.people, person.id).size * 1.8);
+      return `<path d="${leafPath(from, to, branchWidth)}" class="branch"/>`;
     })
     .join('');
 
@@ -201,7 +202,7 @@ export function renderChartSvg(model: ChartModel, style: ChartStyle): string {
     <desc id="chart-description">A fictional five-generation family chart in ${style === 'leaf' ? 'leaf tree' : 'classic box'} style.</desc>
     <rect width="${PAGE_WIDTH}" height="${PAGE_HEIGHT}" class="paper"/>
     <g class="poster-frame"><rect x="25" y="25" width="950" height="657" rx="3"/></g>
-    <text class="poster-title" x="958" y="62" text-anchor="end" direction="rtl">شجرة عائلة حداد · Haddad Family Tree</text>
+    <text class="poster-title" x="958" y="62" text-anchor="end" direction="ltr" unicode-bidi="plaintext">شجرة عائلة حداد · Haddad Family Tree</text>
     <text class="generation-count" x="958" y="82" text-anchor="end">5 generations · شخصيات خيالية</text>
     <g class="connectors">${connectors}</g>
     <g class="people">${marks}</g>

@@ -71,7 +71,7 @@ resetPositions?.addEventListener('click', () => {
 exportSvg?.addEventListener('click', () => {
   const source = renderChartSvg(chart, chartStyle);
   const styles = `<style>
-    .paper{fill:#fffdf8}.poster-frame rect{fill:none;stroke:#b99a50;stroke-width:2}.box-link{fill:none;stroke:#89744b;stroke-width:2}.branch{fill:none;stroke:#a57a42;stroke-width:5;stroke-linecap:round}.box-person rect{fill:#fffdf5;stroke:#876c36;stroke-width:1.6}.person text{font-family:Arial,'Noto Naskh Arabic',sans-serif;font-size:11px;fill:#302b23;text-anchor:middle}.leaf-person text{text-anchor:end}.secondary-name{font-size:8px}.spouse{font-size:8px;fill:#776b58}.living-leaf{fill:#66864b}.deceased-leaf{fill:#c47b37}.poster-title{font-family:Arial,sans-serif;font-size:23px;fill:#302b23}.generation-count,.legend text{font-family:Arial,sans-serif;font-size:9px;fill:#6d6253}
+    .paper{fill:#fffdf8}.poster-frame rect{fill:none;stroke:#b99a50;stroke-width:2}.box-link{fill:none;stroke:#89744b;stroke-width:2}.branch{fill:#a57a42}.box-person rect{fill:#fffdf5;stroke:#876c36;stroke-width:1.6}.person text{font-family:Arial,'Noto Naskh Arabic',sans-serif;font-size:11px;fill:#302b23;text-anchor:middle}.leaf-person text{text-anchor:end}.secondary-name{font-size:8px}.spouse{font-size:8px;fill:#776b58}.living-leaf{fill:#66864b}.deceased-leaf{fill:#c47b37}.poster-title{font-family:Arial,sans-serif;font-size:23px;fill:#302b23}.generation-count,.legend text{font-family:Arial,sans-serif;font-size:9px;fill:#6d6253}
   </style>`;
   const downloadable = source.replace(/(<svg[^>]*>)/, `$1${styles}`);
   const blob = new Blob([downloadable], { type: 'image/svg+xml;charset=utf-8' });
