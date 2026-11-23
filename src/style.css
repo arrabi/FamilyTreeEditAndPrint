@@ -37,6 +37,8 @@ p { line-height: 1.5; }
 button { font: inherit; font-weight: 600; color: white; background: #155d6a; border: 1px solid #155d6a; border-radius: 0.5rem; padding: 0.75rem 1rem; cursor: pointer; }
 button:focus-visible, a:focus-visible { outline: 3px solid #2489a0; outline-offset: 3px; }
 .secondary { color: #155d6a; background: white; }
+.file-status { min-height: 1.5rem; color: #8b2e22; }
+.toolbar-actions { display: flex; gap: 0.5rem; }
 .editor-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 2rem; background: white; border-bottom: 1px solid #ddd8d0; }
 .editor-toolbar h1 { margin: 0; }
 .editor-grid { display: grid; grid-template-columns: 220px minmax(0, 1fr) 220px; min-height: calc(100vh - 9rem); }
