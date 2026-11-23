@@ -43,7 +43,10 @@
       <section id="editor" aria-labelledby="editor-title" hidden>
         <div class="editor-toolbar">
           <h1 id="editor-title">Editor workspace</h1>
-          <button type="button" class="secondary" id="back-to-setup">Back to setup</button>
+          <div class="toolbar-actions">
+            <button type="button" class="secondary" id="back-to-setup">Back to setup</button>
+            <button type="button" id="open-export">Export</button>
+          </div>
         </div>
         <div class="editor-grid">
           <aside class="editor-panel">
@@ -51,13 +54,8 @@
             <p class="muted">Open a family tree to see people here.</p>
           </aside>
           <div class="workspace">
-            <p class="page-label">A3 landscape · preview</p>
-            <div class="page-preview">
-              <div>
-                <h2>Your poster</h2>
-                <p>The editor and page layout are coming soon.</p>
-              </div>
-            </div>
+            <p class="page-label">A3 landscape · 420 × 297 mm · fictional sample with 3 mm bleed</p>
+            <div class="page-preview" id="poster-preview" aria-label="Print poster preview"></div>
           </div>
           <aside class="editor-panel">
             <h2>Page</h2>
@@ -65,11 +63,68 @@
             <h2>Theme</h2>
             <p>Classic gold</p>
             <h2>Layout</h2>
-            <p class="muted">Editing, saving, and export are not available yet.</p>
+            <p class="muted">Print preview uses vector text and excludes hidden people.</p>
           </aside>
         </div>
       </section>
     </main>
+
+    <dialog id="export-dialog" aria-labelledby="export-title">
+      <form method="dialog" id="export-form">
+        <header class="dialog-header">
+          <div>
+            <p class="eyebrow">Print shop ready</p>
+            <h1 id="export-title">Export for printing</h1>
+          </div>
+          <button class="icon-button secondary" value="cancel" aria-label="Close export dialog">×</button>
+        </header>
+
+        <fieldset class="format-options">
+          <legend class="sr-only">Export format</legend>
+          <label class="format-option selected">
+            <input type="radio" name="format" value="pdf" checked>
+            <span><strong>PDF (vector)</strong><small>Embedded fonts · exact print size</small></span>
+          </label>
+          <label class="format-option">
+            <input type="radio" name="format" value="svg">
+            <span><strong>SVG (vector)</strong><small>Editable in Illustrator or Inkscape</small></span>
+          </label>
+          <label class="format-option">
+            <input type="radio" name="format" value="png">
+            <span><strong>PNG image</strong><small>High-resolution raster · DPI included</small></span>
+          </label>
+        </fieldset>
+
+        <dl class="export-spec">
+          <div><dt>Page</dt><dd>A3 landscape · 420 × 297 mm</dd></div>
+          <div><dt>Output</dt><dd id="output-size">426 × 303 mm including 3 mm bleed</dd></div>
+        </dl>
+
+        <fieldset class="print-options">
+          <legend>Print shop options</legend>
+          <label><input id="bleed" type="checkbox" checked> Add 3 mm bleed</label>
+          <label><input id="crop-marks" type="checkbox" checked> Crop marks</label>
+          <label><input type="checkbox" checked disabled> Embed Arabic and Latin fonts</label>
+          <label><input type="checkbox" checked disabled> Exclude hidden people</label>
+        </fieldset>
+
+        <div class="dpi-options" id="dpi-options" hidden>
+          <label for="dpi">PNG resolution</label>
+          <select id="dpi">
+            <option value="150">150 dpi</option>
+            <option value="300" selected>300 dpi (print)</option>
+            <option value="600">600 dpi</option>
+          </select>
+        </div>
+
+        <p class="export-note">Arabic and mixed-script text are shaped by the browser for SVG/PNG and by the embedded-font PDF engine for PDF.</p>
+        <p class="export-status" id="export-status" role="status" aria-live="polite"></p>
+        <footer class="dialog-footer">
+          <button type="button" class="secondary" id="cancel-export">Cancel</button>
+          <button type="button" id="download-export">Export PDF</button>
+        </footer>
+      </form>
+    </dialog>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
