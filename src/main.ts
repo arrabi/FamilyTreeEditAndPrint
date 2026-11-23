@@ -42,7 +42,8 @@ function updateSelection(): void {
   if (!selection) return;
   const selected = selectDescendants(tree, selection);
   const unit = selection.generations === 1 ? 'generation' : 'generations';
-  generationOutput.value = `${selection.generations} ${unit} · ${selected.length} people`;
+  const peopleUnit = selected.length === 1 ? 'person' : 'people';
+  generationOutput.value = `${selection.generations} ${unit} · ${selected.length} ${peopleUnit}`;
   const root = tree.people.find((person) => person.id === selection.rootId);
   selectionSummary.textContent = `Starting with ${root ? displayPersonName(root, selection.nameDisplay).join(' · ') : selection.rootId}.`;
 }

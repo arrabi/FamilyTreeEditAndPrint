@@ -68,6 +68,15 @@ test('parses GEDCOM 5.5.1 people, families, and Arabic transliteration records',
   assert.deepEqual(tree.families[0], { id: 'F1', parentIds: ['I1'], childIds: ['I2'] });
 });
 
+test('recognizes Arabic-script primary GEDCOM names', () => {
+  const tree = parseGedcom(`0 HEAD
+0 @I1@ INDI
+1 NAME يوسف /حداد/
+0 TRLR
+`);
+  assert.deepEqual(tree.people[0].names, { arabic: 'يوسف حداد' });
+});
+
 test('accepts the common GEDCOM 7 record structure and rejects unsupported versions', () => {
   const gedcom = `0 HEAD
 1 GEDC

@@ -145,13 +145,17 @@ export function parseGedcom(text: string): FamilyTree {
       const names: Person['names'] = {};
       for (let i = 0; i < record.lines.length; i += 1) {
         const line = record.lines[i];
-        if (line.tag === 'NAME') names.english ||= cleanGedcomName(line.value);
+        if (line.tag === 'NAME') {
+          const name = cleanGedcomName(line.value);
+          if (/[\u0600-\u06ff]/u.test(name)) names.arabic ||= name;
+          else names.english ||= name;
+        }
         if (line.tag === '_ARABIC_NAME') names.arabic ||= cleanGedcomName(line.value);
         if (line.tag === 'TRAN') {
           const language = record.lines.slice(i + 1).find((next) => next.level <= line.level);
           const languageLine = record.lines.slice(i + 1, language ? record.lines.indexOf(language) : undefined)
             .find((next) => next.level > line.level && next.tag === 'LANG');
-          if (languageLine?.value.toLowerCase().startsWith('ara')) {
+          if (/^(ar(?:-|$)|arabic)/iu.test(languageLine?.value ?? '')) {
             names.arabic ||= cleanGedcomName(line.value);
           }
         }
