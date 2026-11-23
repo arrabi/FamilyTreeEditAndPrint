@@ -35,22 +35,48 @@ p { line-height: 1.5; }
 .placeholder-options h3 { margin-bottom: 0.5rem; }
 .placeholder-options span { display: inline-block; border: 1px solid #c9c1b4; border-radius: 2rem; padding: 0.5rem 1rem; }
 button { font: inherit; font-weight: 600; color: white; background: #155d6a; border: 1px solid #155d6a; border-radius: 0.5rem; padding: 0.75rem 1rem; cursor: pointer; }
+button:disabled { cursor: default; opacity: 0.45; }
 button:focus-visible, a:focus-visible { outline: 3px solid #2489a0; outline-offset: 3px; }
 .secondary { color: #155d6a; background: white; }
 .editor-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 2rem; background: white; border-bottom: 1px solid #ddd8d0; }
 .editor-toolbar h1 { margin: 0; }
+.editor-toolbar { flex-wrap: wrap; }
+.editor-heading, .tool-group { display: flex; align-items: center; gap: 0.5rem; }
+.icon-button { min-width: 2.5rem; padding: 0.55rem 0.65rem; }
+.compact { padding: 0.55rem 0.75rem; font-size: 0.85rem; }
+[data-move-mode][data-active] { color: white; background: #155d6a; }
+.zoom-label { min-width: 3rem; text-align: center; font-size: 0.85rem; }
 .editor-grid { display: grid; grid-template-columns: 220px minmax(0, 1fr) 220px; min-height: calc(100vh - 9rem); }
 .editor-panel { background: white; padding: 1.5rem; }
 .editor-panel h2 { color: #67635d; font-size: 0.85rem; text-transform: uppercase; margin-top: 1.5rem; }
 .editor-panel h2:first-child { margin-top: 0; }
-.workspace { padding: 2rem; }
+.workspace { min-width: 0; padding: 1rem 1.5rem; }
+.canvas-topline { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 0.5rem; color: #67635d; font-size: 0.82rem; }
 .page-label { color: #67635d; font-size: 0.9rem; }
 .page-preview { background: #fffdf8; border: 1px solid #bcae91; box-shadow: 4px 4px 0 #d5d0c8; aspect-ratio: 420 / 297; display: grid; place-items: center; text-align: center; padding: 1rem; }
 .page-preview p { color: #67635d; }
+.canvas-shell { height: calc(100vh - 12rem); min-height: 440px; overflow: hidden; border: 1px solid #cbc5ba; border-radius: 0.5rem; background: #e3e0da; }
+#tree-canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; }
+#tree-canvas:active { cursor: grabbing; }
+.poster-frame { fill: #fffdf8; stroke: #b8a46c; stroke-width: 4; }
+.safe-area { fill: none; stroke: #d9d2c3; stroke-width: 1; stroke-dasharray: 6 5; }
+.connectors path { fill: none; stroke: #a58a4b; stroke-width: 3; }
+.couple-link { fill: none; stroke: #8b6f34; stroke-width: 4; }
+.person-card { cursor: move; }
+.person-card rect { fill: #fff9e7; stroke: #9e8144; stroke-width: 2; }
+.person-card.selected rect { fill: #edf7f8; stroke: #0088ad; stroke-width: 4; }
+.person-name { fill: #342f27; font-size: 14px; font-weight: 600; pointer-events: none; }
+.person-detail { fill: #776c55; font-size: 10px; pointer-events: none; }
+.alignment-guide { stroke: #d52f68; stroke-width: 2; stroke-dasharray: 5 4; pointer-events: none; }
+.family-list { list-style: none; padding: 0; margin: 1rem 0; }
+.family-list li { display: flex; flex-direction: column; gap: 0.15rem; padding: 0.75rem 0; border-bottom: 1px solid #eee9e0; }
+.family-list span, .hint { color: #777167; font-size: 0.78rem; }
+.instruction-list { margin: 0; padding-left: 1.1rem; color: #4e4a45; font-size: 0.82rem; line-height: 1.55; }
 @media (max-width: 800px) {
   .app-header { align-items: flex-start; flex-direction: column; padding: 1rem; }
   .setup-grid, .editor-grid { grid-template-columns: 1fr; }
   .setup-grid { margin: 1rem auto; padding: 0 1rem; gap: 1rem; }
   .card, .workspace { padding: 1.25rem; }
   .editor-panel { padding: 1rem 1.25rem; }
+  .canvas-shell { height: 60vh; min-height: 360px; }
 }

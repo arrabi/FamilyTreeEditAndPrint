@@ -42,30 +42,67 @@
 
       <section id="editor" aria-labelledby="editor-title" hidden>
         <div class="editor-toolbar">
-          <h1 id="editor-title">Editor workspace</h1>
-          <button type="button" class="secondary" id="back-to-setup">Back to setup</button>
+          <div class="editor-heading">
+            <button type="button" class="secondary icon-button" id="back-to-setup" aria-label="Back to setup">←</button>
+            <h1 id="editor-title">Haddad family</h1>
+          </div>
+          <div class="tool-group" aria-label="Move mode">
+            <button type="button" class="secondary compact" data-move-mode="person" data-active>Person</button>
+            <button type="button" class="secondary compact" data-move-mode="couple">Couple</button>
+            <button type="button" class="secondary compact" data-move-mode="branch">Branch</button>
+          </div>
+          <div class="tool-group">
+            <button type="button" class="secondary icon-button" data-action="undo" aria-label="Undo">↶</button>
+            <button type="button" class="secondary icon-button" data-action="redo" aria-label="Redo">↷</button>
+            <button type="button" class="secondary icon-button" data-action="zoom-out" aria-label="Zoom out">−</button>
+            <span id="zoom-label" class="zoom-label">70%</span>
+            <button type="button" class="secondary icon-button" data-action="zoom-in" aria-label="Zoom in">+</button>
+            <button type="button" class="secondary compact" data-action="fit">Fit page</button>
+          </div>
         </div>
         <div class="editor-grid">
           <aside class="editor-panel">
             <h2>People on the poster</h2>
-            <p class="muted">Open a family tree to see people here.</p>
+            <p>Drag on the canvas to move people. Shift-click to select several.</p>
+            <ul class="family-list" aria-label="People">
+              <li><strong>نادية حداد</strong><span>Root</span></li>
+              <li><strong>Yusuf Haddad</strong><span>2 people</span></li>
+              <li><strong>Omar Haddad</strong><span>2 children</span></li>
+              <li><strong>Leila Haddad</strong><span>1 child</span></li>
+              <li><strong>هادي حداد</strong><span>1 child</span></li>
+            </ul>
+            <p class="hint">Tip: choose Branch to move descendants with a person.</p>
           </aside>
           <div class="workspace">
-            <p class="page-label">A3 landscape · preview</p>
-            <div class="page-preview">
-              <div>
-                <h2>Your poster</h2>
-                <p>The editor and page layout are coming soon.</p>
-              </div>
+            <div class="canvas-topline">
+              <span class="page-label">A3 landscape · 420 × 297 mm</span>
+              <span id="selection-status" role="status">Nothing selected</span>
+            </div>
+            <div class="canvas-shell">
+              <svg id="tree-canvas" role="application" aria-label="Editable family tree canvas" tabindex="0">
+                <g id="canvas-stage"></g>
+              </svg>
             </div>
           </div>
           <aside class="editor-panel">
             <h2>Page</h2>
             <p>A3 landscape</p>
+            <p class="hint">Safe area · 3 mm</p>
             <h2>Theme</h2>
             <p>Classic gold</p>
-            <h2>Layout</h2>
-            <p class="muted">Editing, saving, and export are not available yet.</p>
+            <h2>Pointer</h2>
+            <ul class="instruction-list">
+              <li>Drag a person to move it.</li>
+              <li>Shift-click to add or remove selection.</li>
+              <li>Drag empty space or hold Space to pan.</li>
+              <li>Scroll to zoom at the pointer.</li>
+            </ul>
+            <h2>Keyboard</h2>
+            <ul class="instruction-list">
+              <li>Arrow keys nudge 1 unit.</li>
+              <li>Shift + arrows nudge 10 units.</li>
+              <li>Ctrl/Cmd + Z to undo; add Shift to redo.</li>
+            </ul>
           </aside>
         </div>
       </section>
