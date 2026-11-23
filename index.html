@@ -51,21 +51,55 @@
             <p class="muted">Open a family tree to see people here.</p>
           </aside>
           <div class="workspace">
-            <p class="page-label">A3 landscape · preview</p>
-            <div class="page-preview">
-              <div>
-                <h2>Your poster</h2>
-                <p>The editor and page layout are coming soon.</p>
-              </div>
-            </div>
+            <p class="page-label" id="page-summary">A3 landscape · 420 × 297 mm trim</p>
+            <div class="page-preview" id="page-preview"></div>
+            <p class="guide-key"><span class="trim-key"></span> Page edge <span class="safe-key"></span> Safe area <span class="bleed-key"></span> Bleed</p>
           </div>
           <aside class="editor-panel">
             <h2>Page</h2>
-            <p>A3 landscape</p>
+            <form class="page-settings" aria-label="Print page settings">
+              <label>Paper
+                <select id="paper-size" data-page-setting>
+                  <option>A4</option>
+                  <option selected>A3</option>
+                  <option>A2</option>
+                  <option>A1</option>
+                  <option>Letter</option>
+                  <option>Tabloid</option>
+                  <option>Custom</option>
+                </select>
+              </label>
+              <label>Orientation
+                <select id="orientation" data-page-setting>
+                  <option value="portrait">Portrait</option>
+                  <option value="landscape" selected>Landscape</option>
+                </select>
+              </label>
+              <div id="custom-size" class="custom-size" hidden>
+                <label>Width (mm)<input id="custom-width" data-page-setting type="number" min="25" step="0.1" value="297"></label>
+                <label>Height (mm)<input id="custom-height" data-page-setting type="number" min="25" step="0.1" value="420"></label>
+              </div>
+              <fieldset>
+                <legend>Margins (mm)</legend>
+                <div class="margin-grid">
+                  <label>Top<input data-page-setting data-margin="top" type="number" min="0" step="1" value="12"></label>
+                  <label>Right<input data-page-setting data-margin="right" type="number" min="0" step="1" value="12"></label>
+                  <label>Bottom<input data-page-setting data-margin="bottom" type="number" min="0" step="1" value="12"></label>
+                  <label>Left<input data-page-setting data-margin="left" type="number" min="0" step="1" value="12"></label>
+                </div>
+              </fieldset>
+              <label class="bleed-toggle">
+                <input id="bleed-enabled" data-page-setting type="checkbox">
+                Add print bleed
+              </label>
+              <label>Bleed (mm)<input id="bleed" data-page-setting type="number" min="0" step="0.5" value="3" disabled></label>
+            </form>
+            <p id="page-error" class="page-error" role="alert"></p>
             <h2>Theme</h2>
             <p>Classic gold</p>
             <h2>Layout</h2>
-            <p class="muted">Editing, saving, and export are not available yet.</p>
+            <button type="button" id="fit-again" class="secondary">Auto-fit tree again</button>
+            <p id="fit-status" class="fit-status" aria-live="polite"></p>
           </aside>
         </div>
       </section>

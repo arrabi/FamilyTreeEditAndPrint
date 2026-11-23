@@ -15,6 +15,11 @@ As the application grows, organize `src/` around these responsibilities:
 - `themes/`: SVG decoration, chart-style definitions, and theme configuration.
 - `export/`: PDF, SVG, and PNG output.
 
+The first page feature follows these boundaries in `model/page.ts` for exact
+millimetre geometry, `layout/compact-tree.ts` for browser-independent layout and
+fitting, and `editor/page-preview.ts` for SVG rendering. The layout returns
+coordinates in page millimetres so preview zoom never changes print dimensions.
+
 Keep modules small and testable without a browser when possible. Share types
 through `model/` rather than making core data flow depend on editor or export
 code. Add a feature's tests alongside its implementation when test
