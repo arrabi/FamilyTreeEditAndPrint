@@ -92,6 +92,15 @@ export function personContains(person: Person, point: Point): boolean {
     && point.y <= person.y + PERSON_HEIGHT;
 }
 
+export function connectorPath(parent: Person, child: Person): string {
+  const startX = parent.x + PERSON_WIDTH / 2;
+  const startY = parent.y + PERSON_HEIGHT;
+  const endX = child.x + PERSON_WIDTH / 2;
+  const endY = child.y;
+  const middleY = startY + (endY - startY) / 2;
+  return `M ${startX} ${startY} V ${middleY} H ${endX} V ${endY}`;
+}
+
 const alignmentValues = (person: Person): Point => ({
   x: person.x + PERSON_WIDTH / 2,
   y: person.y + PERSON_HEIGHT / 2,

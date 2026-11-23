@@ -1,5 +1,6 @@
 import {
   cloneTree,
+  connectorPath,
   demoTree,
   EditorHistory,
   movementIds,
@@ -76,13 +77,8 @@ export function initEditor(root: HTMLElement): void {
       for (const parentId of person.parentIds) {
         const parent = tree.people.find((item) => item.id === parentId);
         if (!parent) continue;
-        const startX = parent.x + PERSON_WIDTH / 2;
-        const startY = parent.y + PERSON_HEIGHT;
-        const endX = person.x + PERSON_WIDTH / 2;
-        const endY = person.y;
-        const middleY = startY + (endY - startY) / 2;
         connectorLayer.append(element('path', {
-          d: `M ${startX} ${startY} V ${middleY} H ${endX} V ${endY}`,
+          d: connectorPath(parent, person),
         }));
       }
     }
@@ -269,9 +265,11 @@ export function initEditor(root: HTMLElement): void {
       event.preventDefault();
       const distance = event.shiftKey ? 10 : 1;
       const ids = movementIds(tree.people, selected, mode);
-      const snapped = snapTranslation(tree.people, ids, direction.x * distance, direction.y * distance);
-      guides = snapped.guides;
-      tree = { ...tree, people: translatePeople(tree.people, ids, snapped.dx, snapped.dy) };
+      guides = [];
+      tree = {
+        ...tree,
+        people: translatePeople(tree.people, ids, direction.x * distance, direction.y * distance),
+      };
       history.push(tree);
       draw();
     } else if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'z') {
