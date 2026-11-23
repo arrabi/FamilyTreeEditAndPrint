@@ -72,6 +72,11 @@ Plus text placement (inside the mark, beside it, or along the branch), spouse di
 
 Sample images in the repo must use fictional names. A sample of the target look is in `docs/mockups/leaf-tree-sample-A3.png`.
 
+**Candidate styles after the leaf tree** (pictures in `docs/mockups/`, same fictional family):
+- **Crown tree** (`style-crown-tree.png`): upright tree, root on the trunk with roots below, tapering branches spreading into a crown, names on leaf clusters.
+- **Ornamental fan** (`style-ornamental-fan.png`): half-circle, one ring per generation, one colour per branch, geometric border and title cartouche.
+- **Night sky** (`style-night-sky.png`): root as a sun, everyone else a star on loose orbits, names along the rays, dark background.
+
 ### 6. Export
 - Vector PDF with embedded fonts, at the exact page size (with bleed if chosen).
 - SVG.
@@ -120,5 +125,5 @@ The 146-person, 5-generation test tree imports, auto-fits on A3, can be hand-adj
 - Which chart types after descendants: ancestors, hourglass, fan?
 - Should hidden branches leave a small "+N more" marker on the print?
 - Photos in boxes in v1, or later?
-- Which artistic styles after the leaf tree (e.g. fan with ornaments, roots-and-crown hourglass, botanical vine)?
+- Which artistic styles after the leaf tree, and in what order (crown tree, ornamental fan and night sky are pictured; botanical vine is another idea)?
 - Can a user build a style from parts in the app, or only by editing a style file?
