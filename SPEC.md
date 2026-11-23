@@ -1,6 +1,6 @@
 # Family Tree Poster: mini spec
 
-Status: draft v0.1, 22 Nov 2026. Open questions are at the end; each gets settled in its own issue.
+Status: draft v0.1, 22 Nov 2026. Open questions are at the end; each gets settled in its own issue. Early screen mock-ups are in `docs/mockups/`.
 
 ## Problem
 
@@ -70,7 +70,7 @@ Plus text placement (inside the mark, beside it, or along the branch), spouse di
 - Organic layout: twigs push each other apart to fill the page evenly, no overlapping text.
 - Everything stays draggable: moving a person bends its twig and moves its sub-branch; curves redraw live.
 
-Sample images in the repo must use fictional names.
+Sample images in the repo must use fictional names. A sample of the target look is in `docs/mockups/leaf-tree-sample-A3.png`.
 
 ### 6. Export
 - Vector PDF with embedded fonts, at the exact page size (with bleed if chosen).

@@ -1,0 +1,12 @@
+# Mock-ups
+
+Early pictures of the app and the first artistic chart style. All names are fictional.
+
+- `overview.png`: the four screens together.
+- `1-open-and-choose.png`: open a GEDCOM or JSON file; pick the start person, chart type, generations, names, paper and theme.
+- `2-editor.png`: the editor. Page border always visible; drag a person or a whole family; hidden branches show grey and don't print.
+- `3-themes.png`: theme picker (frames, ornaments, box and line styles, fonts), plus uploading your own SVG.
+- `4-export.png`: export vector PDF, SVG or PNG with bleed, crop marks and embedded fonts, plus print checks.
+- `leaf-tree-sample-A3.png`: target look for the "Leaf tree" chart style (SPEC.md section 5): sideways, tapering branches, a leaf per person (green living, orange deceased), spouses after ∞.
+
+These are pictures, not designs to copy pixel for pixel. Each UI feature still gets its own mini spec and mock-up in its issue before it is built.
