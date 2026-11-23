@@ -1,5 +1,6 @@
 import './style.css';
 import { showScreen } from './screen';
+import { initializeSpike } from './spike';
 
 const setup = document.querySelector<HTMLElement>('#setup');
 const editor = document.querySelector<HTMLElement>('#editor');
@@ -10,6 +11,7 @@ if (setup && editor && openEditor && backToSetup) {
   openEditor.addEventListener('click', () => {
     showScreen('editor', setup, editor);
     backToSetup.focus();
+    void initializeSpike();
   });
   backToSetup.addEventListener('click', () => {
     showScreen('setup', setup, editor);

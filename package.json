@@ -17,9 +17,15 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/pdfkit": "^0.17.7",
     "eslint": "10.15.0",
     "typescript": "5.9.3",
     "typescript-eslint": "8.73.0",
     "vite": "8.3.8"
+  },
+  "dependencies": {
+    "fabric": "^7.4.0",
+    "konva": "^10.10.0",
+    "pdfkit": "^0.21.0"
   }
 }

@@ -5,6 +5,14 @@
   font-synthesis: none;
 }
 
+@font-face {
+  font-family: 'Noto Naskh Arabic';
+  src: url('/fonts/NotoNaskhArabic-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 * { box-sizing: border-box; }
 body { margin: 0; }
 [hidden] { display: none !important; }
@@ -39,6 +47,19 @@ button:focus-visible, a:focus-visible { outline: 3px solid #2489a0; outline-offs
 .secondary { color: #155d6a; background: white; }
 .editor-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 2rem; background: white; border-bottom: 1px solid #ddd8d0; }
 .editor-toolbar h1 { margin: 0; }
+.toolbar-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.eyebrow { color: #67635d; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 0.35rem; text-transform: uppercase; }
+.spike-intro { max-width: 1240px; margin: 0 auto; padding: 1.5rem 2rem 0; }
+.spike-intro p { margin-bottom: 0.35rem; }
+.spike-status { color: #155d6a; font-weight: 600; }
+.spike-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; max-width: 1240px; margin: 1.5rem auto 3rem; padding: 0 2rem; }
+.spike-card { min-width: 0; background: white; border: 1px solid #ddd8d0; border-radius: 1rem; padding: 1.25rem; }
+.spike-card-heading { display: flex; align-items: start; justify-content: space-between; gap: 1rem; }
+.spike-card h2 { margin-bottom: 1rem; }
+.license-badge { color: #155d6a; background: #e6f0f1; border-radius: 2rem; font-size: 0.75rem; font-weight: 700; padding: 0.35rem 0.6rem; }
+.canvas-shell { width: 560px; max-width: 100%; margin: 0 auto 1rem; overflow: auto; box-shadow: 3px 3px 0 #d5d0c8; }
+.canvas-shell canvas { display: block; }
+.fabric-shell .canvas-container { margin: 0; }
 .editor-grid { display: grid; grid-template-columns: 220px minmax(0, 1fr) 220px; min-height: calc(100vh - 9rem); }
 .editor-panel { background: white; padding: 1.5rem; }
 .editor-panel h2 { color: #67635d; font-size: 0.85rem; text-transform: uppercase; margin-top: 1.5rem; }
@@ -53,4 +74,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid #2489a0; outline-offs
   .setup-grid { margin: 1rem auto; padding: 0 1rem; gap: 1rem; }
   .card, .workspace { padding: 1.25rem; }
   .editor-panel { padding: 1rem 1.25rem; }
+  .editor-toolbar { align-items: flex-start; flex-direction: column; padding: 1rem; }
+  .spike-grid { grid-template-columns: 1fr; padding: 0 1rem; }
+  .spike-intro { padding-inline: 1rem; }
 }
