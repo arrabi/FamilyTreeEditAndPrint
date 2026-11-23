@@ -147,7 +147,7 @@ export async function renderPdf(document: PosterDocument, fonts: PdfFonts): Prom
     );
   }
 
-  if (document.page.cropMarks) {
+  if (document.page.cropMarks && bleed > 0) {
     const marks = [
       [bleed, bleed, -2, 0],
       [bleed, bleed, 0, -2],

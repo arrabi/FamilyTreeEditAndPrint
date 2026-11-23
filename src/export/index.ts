@@ -1,6 +1,5 @@
 import { loadExportFonts } from './fonts.ts';
 import { getOutputPageSize, type PosterDocument } from './model.ts';
-import { renderPdf } from './pdf.ts';
 import { svgToPng } from './png.ts';
 import { renderSvg } from './svg.ts';
 
@@ -17,6 +16,7 @@ export async function createExport(document: PosterDocument, options: ExportOpti
   const size = getOutputPageSize(document.page);
   if (options.format === 'svg') return new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
   if (options.format === 'png') return svgToPng(svg, size.widthMm, size.heightMm, options.dpi ?? 300);
+  const { renderPdf } = await import('./pdf.ts');
   const pdf = await renderPdf(document, fonts);
   return new Blob([pdf as BlobPart], { type: 'application/pdf' });
 }

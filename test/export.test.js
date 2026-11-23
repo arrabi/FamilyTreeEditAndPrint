@@ -35,6 +35,12 @@ test('visibility follows a hidden person or whole hidden branch', () => {
     visiblePeople(document).map((person) => person.id),
     ['root', 'mariam'],
   );
+  document.people.find((person) => person.id === 'sami').hiddenBranch = false;
+  document.people.find((person) => person.id === 'sami').hidden = true;
+  assert.deepEqual(
+    visiblePeople(document).map((person) => person.id),
+    ['root', 'mariam', 'nadia'],
+  );
 });
 
 test('mixed-script text retains separate shaped RTL and Latin runs', () => {

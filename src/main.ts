@@ -19,6 +19,7 @@ const dpiOptions = document.querySelector<HTMLElement>('#dpi-options');
 const bleed = document.querySelector<HTMLInputElement>('#bleed');
 const cropMarks = document.querySelector<HTMLInputElement>('#crop-marks');
 const dpi = document.querySelector<HTMLSelectElement>('#dpi');
+const outputSize = document.querySelector<HTMLElement>('#output-size');
 
 if (preview) preview.innerHTML = renderSvg(fictionalPoster);
 
@@ -46,10 +47,25 @@ function updateFormatUi(): void {
   if (downloadExport) downloadExport.textContent = `Export ${format.toUpperCase()}`;
 }
 
+function updateBleedUi(): void {
+  const hasBleed = bleed?.checked ?? false;
+  if (cropMarks) {
+    cropMarks.disabled = !hasBleed;
+    if (!hasBleed) cropMarks.checked = false;
+  }
+  if (outputSize) {
+    outputSize.textContent = hasBleed
+      ? '426 × 303 mm including 3 mm bleed'
+      : '420 × 297 mm without bleed';
+  }
+}
+
 openExport?.addEventListener('click', () => {
   updateFormatUi();
+  updateBleedUi();
   exportDialog?.showModal();
 });
+bleed?.addEventListener('change', updateBleedUi);
 cancelExport?.addEventListener('click', () => exportDialog?.close());
 document.querySelectorAll<HTMLInputElement>('input[name="format"]').forEach((input) => {
   input.addEventListener('change', updateFormatUi);

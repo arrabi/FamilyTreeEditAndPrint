@@ -74,7 +74,7 @@ export function renderSvg(document: PosterDocument, fonts: SvgFont[] = []): stri
       text.color ?? '#332c24',
     )}" ${textAttributes(direction, anchor)}>${escapeXml(text.text)}</text>`;
   });
-  const cropMarks = document.page.cropMarks
+  const cropMarks = document.page.cropMarks && bleed > 0
     ? `<path data-crop-marks="true" d="M ${number(bleed)} ${number(bleed - 2)}V ${number(
         bleed,
       )}M ${number(bleed - 2)} ${number(bleed)}H ${number(bleed)} M ${number(

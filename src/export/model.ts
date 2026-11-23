@@ -101,13 +101,13 @@ export function getOutputPageSize(page: PageSettings): PageSize {
 
 export function visiblePeople(document: PosterDocument): PosterPerson[] {
   const people = new Map(document.people.map((person) => [person.id, person]));
-  const isHidden = (person: PosterPerson): boolean => {
-    if (person.hidden || person.hiddenBranch) return true;
+  const isInHiddenBranch = (person: PosterPerson): boolean => {
+    if (person.hiddenBranch) return true;
     const parent = person.parentId ? people.get(person.parentId) : undefined;
-    return parent?.hiddenBranch ? true : parent ? isHidden(parent) : false;
+    return parent ? isInHiddenBranch(parent) : false;
   };
 
-  return document.people.filter((person) => !isHidden(person));
+  return document.people.filter((person) => !person.hidden && !isInHiddenBranch(person));
 }
 
 export function personText(person: PosterPerson): string {
