@@ -12,6 +12,7 @@ h1, h2, h3, p { margin-top: 0; }
 h1, h2 { font-size: 1.3rem; }
 h3 { color: #67635d; font-size: 0.8rem; text-transform: uppercase; }
 p { line-height: 1.5; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
 .app-header {
   background: #fff;
@@ -39,18 +40,44 @@ button:focus-visible, a:focus-visible { outline: 3px solid #2489a0; outline-offs
 .secondary { color: #155d6a; background: white; }
 .editor-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 2rem; background: white; border-bottom: 1px solid #ddd8d0; }
 .editor-toolbar h1 { margin: 0; }
+.toolbar-actions { display: flex; gap: 0.75rem; }
 .editor-grid { display: grid; grid-template-columns: 220px minmax(0, 1fr) 220px; min-height: calc(100vh - 9rem); }
 .editor-panel { background: white; padding: 1.5rem; }
 .editor-panel h2 { color: #67635d; font-size: 0.85rem; text-transform: uppercase; margin-top: 1.5rem; }
 .editor-panel h2:first-child { margin-top: 0; }
 .workspace { padding: 2rem; }
 .page-label { color: #67635d; font-size: 0.9rem; }
-.page-preview { background: #fffdf8; border: 1px solid #bcae91; box-shadow: 4px 4px 0 #d5d0c8; aspect-ratio: 420 / 297; display: grid; place-items: center; text-align: center; padding: 1rem; }
-.page-preview p { color: #67635d; }
+.page-preview { background: #fffdf8; border: 1px solid #bcae91; box-shadow: 4px 4px 0 #d5d0c8; aspect-ratio: 420 / 297; overflow: hidden; }
+.page-preview svg { width: 100%; height: 100%; display: block; }
+dialog { width: min(92vw, 36rem); max-height: 94vh; border: 1px solid #c8c0b3; border-radius: 0.9rem; padding: 0; color: #242321; box-shadow: 0 1.5rem 5rem #19140d66; }
+dialog::backdrop { background: #24211d99; }
+dialog form { padding: 1.5rem; }
+.dialog-header, .dialog-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.dialog-header h1 { margin-bottom: 1.25rem; }
+.eyebrow { color: #155d6a; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.2rem; }
+.icon-button { font-size: 1.5rem; line-height: 1; border: 0; padding: 0.25rem 0.5rem; }
+.format-options, .print-options { border: 0; padding: 0; margin: 0; }
+.format-options { display: grid; gap: 0.6rem; }
+.format-option { display: flex; align-items: center; gap: 0.75rem; border: 1px solid #d7d0c6; border-radius: 0.6rem; padding: 0.85rem; cursor: pointer; }
+.format-option.selected { border-color: #155d6a; box-shadow: 0 0 0 1px #155d6a; background: #f1f9f9; }
+.format-option span { display: grid; gap: 0.15rem; }
+.format-option small { color: #67635d; }
+.export-spec { margin: 1.25rem 0; padding: 1rem; background: #f5f2ed; border-radius: 0.5rem; }
+.export-spec div { display: grid; grid-template-columns: 5rem 1fr; }
+.export-spec dt { color: #67635d; }
+.export-spec dd { margin: 0; }
+.print-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; }
+.print-options legend { color: #67635d; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.75rem; }
+.dpi-options { display: grid; gap: 0.5rem; margin-top: 1rem; }
+select { font: inherit; color: inherit; border: 1px solid #bdb4a7; border-radius: 0.4rem; padding: 0.65rem; }
+.export-note { color: #67635d; font-size: 0.8rem; margin: 1rem 0 0; }
+.export-status { min-height: 1.5rem; color: #155d6a; margin: 0.5rem 0; }
+.dialog-footer { padding-top: 0.75rem; border-top: 1px solid #e3ded6; justify-content: flex-end; }
 @media (max-width: 800px) {
   .app-header { align-items: flex-start; flex-direction: column; padding: 1rem; }
   .setup-grid, .editor-grid { grid-template-columns: 1fr; }
   .setup-grid { margin: 1rem auto; padding: 0 1rem; gap: 1rem; }
   .card, .workspace { padding: 1.25rem; }
   .editor-panel { padding: 1rem 1.25rem; }
+  .print-options { grid-template-columns: 1fr; }
 }
