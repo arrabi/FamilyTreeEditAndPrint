@@ -42,6 +42,16 @@ export async function setPngResolution(blob: Blob, dpi: number): Promise<Blob> {
 
   const parts: Uint8Array[] = [bytes.subarray(0, 8)];
   let offset = 8;
+  let addedResolution = false;
+  const resolutionChunk = (): Uint8Array => {
+    const data = new Uint8Array(9);
+    const dataView = new DataView(data.buffer);
+    const pixelsPerMetre = Math.round(dpi / 0.0254);
+    dataView.setUint32(0, pixelsPerMetre);
+    dataView.setUint32(4, pixelsPerMetre);
+    data[8] = 1;
+    return pngChunk('pHYs', data);
+  };
   while (offset < bytes.length) {
     const view = new DataView(bytes.buffer, bytes.byteOffset + offset);
     const length = view.getUint32(0);
@@ -51,14 +61,13 @@ export async function setPngResolution(blob: Blob, dpi: number): Promise<Blob> {
       offset = end;
       continue;
     }
+    if (type === 'IDAT' && !addedResolution) {
+      parts.push(resolutionChunk());
+      addedResolution = true;
+    }
     if (type === 'IEND') {
-      const data = new Uint8Array(9);
-      const dataView = new DataView(data.buffer);
-      const pixelsPerMetre = Math.round(dpi / 0.0254);
-      dataView.setUint32(0, pixelsPerMetre);
-      dataView.setUint32(4, pixelsPerMetre);
-      data[8] = 1;
-      parts.push(pngChunk('pHYs', data), bytes.subarray(offset, end));
+      if (!addedResolution) parts.push(resolutionChunk());
+      parts.push(bytes.subarray(offset, end));
       break;
     }
     parts.push(bytes.subarray(offset, end));

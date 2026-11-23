@@ -48,9 +48,9 @@ export function renderSvg(document: PosterDocument, fonts: SvgFont[] = []): stri
     const to = peopleById.get(connection.to);
     if (!from || !to) return [];
     return [
-      `<path d="M ${number(bleed + from.x)} ${number(bleed + from.y + 12)} C ${number(
+      `<path d="M ${number(bleed + from.x)} ${number(bleed + from.y + 7)} C ${number(
         bleed + from.x - 10,
-      )} ${number(bleed + from.y + 12)}, ${number(bleed + to.x + 10)} ${number(
+      )} ${number(bleed + from.y + 7)}, ${number(bleed + to.x + 10)} ${number(
         bleed + to.y,
       )}, ${number(bleed + to.x)} ${number(bleed + to.y)}" fill="none" stroke="#8b6a3f" stroke-width="1.4"/>`,
     ];
