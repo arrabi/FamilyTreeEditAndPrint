@@ -1,6 +1,6 @@
 # Family Tree Edit & Print
 
-A browser app for creating and editing a print-ready family tree poster. The current version is a static app shell: it previews the setup and editor workspaces, but importing files, editing, saving, and exporting are not implemented yet.
+A browser app for creating and editing a print-ready family tree poster. The current version previews the setup and editor workspaces. The sample editor can hide people or branches, override poster display text without changing the imported name, and download the resulting SVG. File importing, saving, and other export formats are not implemented yet.
 
 ![Family Tree Edit & Print screen mock-ups](docs/mockups/overview.png)
 

@@ -43,9 +43,25 @@ button:focus-visible, a:focus-visible { outline: 3px solid #2489a0; outline-offs
 .editor-panel { background: white; padding: 1.5rem; }
 .editor-panel h2 { color: #67635d; font-size: 0.85rem; text-transform: uppercase; margin-top: 1.5rem; }
 .editor-panel h2:first-child { margin-top: 0; }
+.editor-panel label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
+.editor-panel input[type="text"] { width: 100%; border: 1px solid #bcae91; border-radius: 0.4rem; font: inherit; padding: 0.65rem; }
+.editor-panel button { font-size: 0.85rem; }
+.source-name { font-weight: 600; overflow-wrap: anywhere; }
+.field-help { color: #67635d; font-size: 0.8rem; line-height: 1.4; }
+.checkbox-label { display: flex !important; align-items: center; gap: 0.5rem; margin: 1rem 0; }
+.wide-button { width: 100%; }
+.people-list { display: grid; gap: 0.4rem; }
+.person-list-item { color: #242321; background: #f7f5f1; border-color: #ddd8d0; font-weight: 400; text-align: start; }
+.person-list-item.selected { color: #fff; background: #155d6a; border-color: #155d6a; }
+.person-list-item.hidden-person { opacity: 0.55; text-decoration: line-through; }
 .workspace { padding: 2rem; }
 .page-label { color: #67635d; font-size: 0.9rem; }
-.page-preview { background: #fffdf8; border: 1px solid #bcae91; box-shadow: 4px 4px 0 #d5d0c8; aspect-ratio: 420 / 297; display: grid; place-items: center; text-align: center; padding: 1rem; }
+.page-preview { background: #fffdf8; border: 1px solid #bcae91; box-shadow: 4px 4px 0 #d5d0c8; aspect-ratio: 420 / 297; overflow: hidden; }
+.page-preview svg { display: block; height: 100%; width: 100%; }
+.page-preview .paper { fill: #fffdf8; }
+.page-preview .connectors path { fill: none; stroke: #9b7951; stroke-width: 5; }
+.page-preview .people rect { fill: #edf5f0; stroke: #155d6a; stroke-width: 3; }
+.page-preview .people text { direction: rtl; fill: #242321; font-size: 15px; text-anchor: middle; }
 .page-preview p { color: #67635d; }
 @media (max-width: 800px) {
   .app-header { align-items: flex-start; flex-direction: column; padding: 1rem; }

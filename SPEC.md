@@ -42,6 +42,7 @@ Anyone with a family tree file who wants a printable poster. First real test cas
 - Connector lines re-route as boxes move.
 - Snap and alignment guides; nudge with arrow keys; undo and redo.
 - Hide or show a person or a whole branch (hidden means not printed, never deleted from the data).
+- Hidden branches remain visible and dimmed in the editor so they can be restored, but leave no “+N more” marker in the poster, preview, or exports.
 - Edit display text on a box without changing the source data (e.g. shorten a long name).
 - Add free text (title, dedication, date) and images (a family crest or photo).
 
@@ -96,7 +97,7 @@ Sample images in the repo must use fictional names. A sample of the target look 
 ## Technical direction
 
 - UI: no framework, with strict TypeScript and Vite. The initial shell is small enough for native HTML, CSS and DOM APIs; avoiding a runtime framework keeps the static bundle and dependencies small. Revisit this choice if the editor's state and UI complexity warrant it.
-- The current shell previews the setup and editor screens; importing, configuration, editing, saving and export are not implemented yet.
+- The current shell previews the setup and editor screens. Its sample editor supports poster-only visibility and text edits plus SVG export; importing, configuration, saving and other export formats are not implemented yet.
 - Canvas: Konva or Fabric.js (both MIT). Pick after the Arabic spike.
 - Layout: own compact tree layout (tidy-tree style), optionally seeded from Topola's layout.
 - PDF: svg2pdf.js plus jsPDF, or pdfkit; must embed fonts and keep text as text where possible.
@@ -123,7 +124,6 @@ The 146-person, 5-generation test tree imports, auto-fits on A3, can be hand-adj
 - Konva or Fabric.js (decided by the spike)?
 - How much of Topola to reuse: parser only, or its layout too?
 - Which chart types after descendants: ancestors, hourglass, fan?
-- Should hidden branches leave a small "+N more" marker on the print?
 - Photos in boxes in v1, or later?
 - Which artistic styles after the leaf tree, and in what order (crown tree, ornamental fan and night sky are pictured; botanical vine is another idea)?
 - Can a user build a style from parts in the app, or only by editing a style file?
