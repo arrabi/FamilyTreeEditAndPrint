@@ -83,8 +83,12 @@ Sample images in the repo must use fictional names. A sample of the target look 
 - PNG at 300 dpi (or chosen dpi) for print shops that want an image.
 
 ### 7. Save and reopen
-- Save the whole project (tree data, positions, hidden items, theme, page) as one file the user keeps; reopen later to keep editing.
-- Optional autosave in the browser.
+- Save the whole project (tree data, positions, hidden items, display
+  overrides, theme/style, page, and added poster content) as one versioned
+  `.ftep.json` file the user keeps; reopen later to keep editing.
+- Invalid and unsupported versions are reported without replacing the current
+  project. The format is documented in `docs/project-format.md`.
+- Browser autosave is out of scope.
 
 ## Right-to-left and Arabic
 
