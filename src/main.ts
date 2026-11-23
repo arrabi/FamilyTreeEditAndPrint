@@ -1,4 +1,5 @@
 import './style.css';
+import { initEditor } from './editor/canvas';
 import { showScreen } from './screen';
 
 const setup = document.querySelector<HTMLElement>('#setup');
@@ -7,6 +8,7 @@ const openEditor = document.querySelector<HTMLButtonElement>('#open-editor');
 const backToSetup = document.querySelector<HTMLButtonElement>('#back-to-setup');
 
 if (setup && editor && openEditor && backToSetup) {
+  initEditor(editor);
   openEditor.addEventListener('click', () => {
     showScreen('editor', setup, editor);
     backToSetup.focus();
