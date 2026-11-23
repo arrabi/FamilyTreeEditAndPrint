@@ -97,9 +97,11 @@ Sample images in the repo must use fictional names. A sample of the target look 
 
 - UI: no framework, with strict TypeScript and Vite. The initial shell is small enough for native HTML, CSS and DOM APIs; avoiding a runtime framework keeps the static bundle and dependencies small. Revisit this choice if the editor's state and UI complexity warrant it.
 - The current shell previews the setup and editor screens; importing, configuration, editing, saving and export are not implemented yet.
-- Canvas: Konva or Fabric.js (both MIT). Pick after the Arabic spike.
+- Canvas: Fabric.js (MIT), selected by the Arabic spike below. Konva (also MIT)
+  remains a fallback if future scene requirements favor its stage model.
 - Layout: own compact tree layout (tidy-tree style), optionally seeded from Topola's layout.
-- PDF: svg2pdf.js plus jsPDF, or pdfkit; must embed fonts and keep text as text where possible.
+- PDF: PDFKit (MIT), selected by the spike. Keep text as text and embed the
+  font; use a Unicode-aware visual-run step for mixed RTL/LTR lines.
 - Hosting: static site (Vercel or GitHub Pages), preview deploy per PR.
 - License: MIT (see LICENSE).
 
@@ -120,10 +122,58 @@ The 146-person, 5-generation test tree imports, auto-fits on A3, can be hand-adj
 ## Open questions
 
 - App name.
-- Konva or Fabric.js (decided by the spike)?
+- Konva or Fabric.js: Fabric.js was selected by the Arabic spike (23 Nov 2026).
 - How much of Topola to reuse: parser only, or its layout too?
 - Which chart types after descendants: ancestors, hourglass, fan?
 - Should hidden branches leave a small "+N more" marker on the print?
 - Photos in boxes in v1, or later?
 - Which artistic styles after the leaf tree, and in what order (crown tree, ornamental fan and night sky are pictured; botanical vine is another idea)?
 - Can a user build a style from parts in the app, or only by editing a style file?
+
+## Arabic rendering spike outcome
+
+Issue #7 added a non-production comparison at **Preview editor workspace**.
+It uses only fictional names (`ليلى نور بن أحمد`, `Layla Noor Hartwell`, and
+`ليلى Noor — أحمد Hartwell`) and keeps all font loading, shaping, and export in
+the browser.
+
+| Concern | Konva | Fabric.js | Result |
+| --- | --- | --- | --- |
+| License | MIT | MIT | Both meet the project license rule. |
+| Arabic canvas | Browser canvas performs joining and shaping correctly. | Browser canvas performs joining and shaping correctly. | Both pass. |
+| Mixed script | Correct with `direction`/right alignment. | Correct with `direction`/right alignment. | Both pass. |
+| Dragging | Text nodes are draggable. | Objects retain selection and position. | Both pass. |
+| Native vector export | No: normal export is raster. | Yes: SVG output preserves text. | Fabric.js is the better editor fit. |
+| PDF integration | Scene model positions are exported directly. | Scene model positions are exported directly. | No raster canvas is sent to PDF. |
+
+Recommendation: use **Fabric.js** for the future editor because its retained
+object model and editable-text SVG export match hand editing and vector output.
+Use **PDFKit** for PDF generation: it embeds a subsetted font and emits sharp
+vector glyphs rather than a screenshot of the canvas. Both PDFKit and Fabric.js
+are MIT. The bundled, merged Noto Naskh Arabic font is OFL-1.1; its license is
+kept at `public/fonts/LICENSE-Noto-Naskh-Arabic.txt`.
+
+The compared PDF paths were (1) serializing canvas pixels, (2) converting SVG
+with `svg2pdf.js`/jsPDF, and (3) drawing the shared scene model with PDFKit.
+Pixel export fails the vector requirement. SVG conversion is attractive, but
+font embedding, complex RTL shaping, and matching dragged text positions add a
+second conversion layer. PDFKit keeps one font/shaping implementation in the
+export path and produced a verified 420 × 297 mm A3 page with ToUnicode mapping
+and an embedded font.
+
+Limitations found by the spike:
+
+- PDFKit does not provide full browser bidi line layout for mixed Latin/Arabic
+  runs. The exporter explicitly orders visual word runs for the prototype's
+  RTL base direction. The production exporter must replace that small helper
+  with a complete Unicode Bidirectional Algorithm implementation and tests
+  for punctuation, numbers, parentheses, and line wrapping.
+- Fabric's SVG is vector text, but an SVG viewer must honor the embedded
+  `@font-face` data URL; the PDF path is the print-shop authority.
+- This spike proves names on a single line and one font weight. Multiline text,
+  multiple fonts, vertical clipping, and very long names remain editor work.
+
+Manual acceptance: open the preview, visually check that Arabic joins in the
+same places in both canvases, drag the fictional names, export PDF from each
+canvas, zoom to 400% in a PDF viewer, and confirm a 420 × 297 mm page, sharp
+edges, embedded Noto Naskh Arabic, and correct mixed-script order.
