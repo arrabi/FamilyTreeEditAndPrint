@@ -1,6 +1,10 @@
 # Family Tree Edit & Print
 
-A browser app for creating and editing a print-ready family tree poster. The current version is a static app shell: it previews the setup and editor workspaces, but importing files, editing, saving, and exporting are not implemented yet.
+A browser app for creating and editing a print-ready family tree poster. The
+app can currently import GEDCOM 5.5.1 (including common GEDCOM 7 structures) and
+the documented [simple JSON format](docs/json-format.md), then choose a root,
+generation depth, and Arabic, English, or bilingual names for a descendants
+preview. Editing, saving, and exporting are not implemented yet.
 
 ![Family Tree Edit & Print screen mock-ups](docs/mockups/overview.png)
 
@@ -9,7 +13,9 @@ visual ideas are in [the mock-ups](docs/mockups/README.md).
 
 ## Project layout
 
-- `src/main.ts` and `src/style.css`: browser entry point and starter screen.
+- `src/main.ts` and `src/style.css`: browser entry point and setup screen.
+- `src/import/`: local GEDCOM/JSON parsing and descendants selection.
+- `public/fixtures/`: the fictional 146-person mixed-script sample.
 - `docs/architecture.md`: planned boundaries for future application features.
 - `docs/mockups/`: early product and chart-style mock-ups.
 - `research/`: product research.

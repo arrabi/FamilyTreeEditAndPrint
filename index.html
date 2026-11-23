@@ -18,24 +18,56 @@
         <div class="setup-grid">
           <section class="card">
             <h1 id="setup-title">1. Open your family tree</h1>
-            <div class="drop-area">
+            <label class="drop-area" id="drop-area" for="tree-file">
               <span class="upload-icon" aria-hidden="true">↑</span>
-              <strong>GEDCOM (.ged) or JSON</strong>
-              <p>File import is coming soon.</p>
+              <strong>Drop a GEDCOM (.ged) or JSON file here</strong>
+              <span>or choose a file</span>
+              <input id="tree-file" type="file" accept=".ged,.gedcom,.json,application/json">
+            </label>
+            <div id="file-status" class="file-status" role="status" aria-live="polite">
+              <strong>No family tree opened</strong>
+              <p class="muted">Your file stays on this computer.</p>
             </div>
-            <h2>Recent projects</h2>
-            <p class="muted">Saved projects will appear here.</p>
+            <h2>Sample tree</h2>
+            <button type="button" class="sample-button" id="load-sample">
+              <span aria-hidden="true" class="sample-icon">ft</span>
+              <span><strong>Fictional Haddad family</strong><small>146 people · 5 generations · Arabic and English</small></span>
+            </button>
           </section>
           <section class="card">
             <h2>2. Choose what to print</h2>
-            <p>Choose a person, chart type, generations, names, paper, and theme after opening a tree.</p>
-            <div class="placeholder-options" aria-label="Poster options">
-              <div><h3>Chart type</h3><span>Descendants</span></div>
-              <div><h3>Paper</h3><span>A3 landscape</span></div>
-              <div><h3>Theme</h3><span>Classic gold</span></div>
-            </div>
-            <p class="muted">Poster setup is not available yet.</p>
-            <button type="button" id="open-editor">Preview editor workspace</button>
+            <form id="chart-form">
+              <fieldset>
+                <legend>Start from</legend>
+                <label for="root-person" class="sr-only">Root person</label>
+                <select id="root-person" disabled><option>Open a tree to choose a person</option></select>
+              </fieldset>
+              <fieldset>
+                <legend>Chart type</legend>
+                <div class="pill selected">Descendants</div>
+              </fieldset>
+              <fieldset>
+                <legend>Generations</legend>
+                <div class="range-row">
+                  <input id="generation-count" type="range" min="1" max="8" value="5" disabled>
+                  <output id="generation-output" for="generation-count">5 generations · 0 people</output>
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend>Names</legend>
+                <div class="segmented">
+                  <label><input type="radio" name="name-display" value="arabic" disabled><span>Arabic</span></label>
+                  <label><input type="radio" name="name-display" value="english" disabled><span>English</span></label>
+                  <label><input type="radio" name="name-display" value="both" checked disabled><span>Both</span></label>
+                </div>
+              </fieldset>
+              <div class="static-options" aria-label="Paper and theme">
+                <div><h3>Paper</h3><span class="pill selected">A3</span><span class="pill">A4</span><span class="pill">A2</span><span class="pill">A1</span></div>
+                <div><h3>Theme</h3><span class="pill selected">Classic gold</span><span class="pill">Olive leaves</span></div>
+              </div>
+              <p id="selection-summary" class="muted">Open a tree to choose what appears on the page.</p>
+              <button type="submit" id="open-editor" disabled>Create poster</button>
+            </form>
           </section>
         </div>
       </section>
@@ -52,10 +84,10 @@
           </aside>
           <div class="workspace">
             <p class="page-label">A3 landscape · preview</p>
-            <div class="page-preview">
-              <div>
-                <h2>Your poster</h2>
-                <p>The editor and page layout are coming soon.</p>
+            <div class="page-preview" id="poster-preview">
+              <div class="poster-content">
+                <h2>Haddad family</h2>
+                <p class="muted">Create a poster to preview the selected people.</p>
               </div>
             </div>
           </div>
@@ -70,6 +102,7 @@
         </div>
       </section>
     </main>
+    <footer>Open a GEDCOM or the documented JSON format. All processing happens in your browser.</footer>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
