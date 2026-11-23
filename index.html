@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#155d6a">
+    <title>Family Tree Edit &amp; Print</title>
+  </head>
+  <body>
+    <header class="app-header">
+      <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">ft</span> Family Tree Edit &amp; Print</a>
+      <p>Runs in your browser. Your file never leaves your computer.</p>
+    </header>
+
+    <main>
+      <section id="setup" aria-labelledby="setup-title">
+        <div class="setup-grid">
+          <section class="card">
+            <h1 id="setup-title">1. Open your family tree</h1>
+            <div class="drop-area">
+              <span class="upload-icon" aria-hidden="true">↑</span>
+              <strong>GEDCOM (.ged) or JSON</strong>
+              <p>File import is coming soon.</p>
+            </div>
+            <h2>Recent projects</h2>
+            <p class="muted">Saved projects will appear here.</p>
+          </section>
+          <section class="card">
+            <h2>2. Choose what to print</h2>
+            <p>Choose a person, chart type, generations, names, paper, and theme after opening a tree.</p>
+            <div class="placeholder-options" aria-label="Poster options">
+              <div><h3>Chart type</h3><span>Descendants</span></div>
+              <div><h3>Paper</h3><span>A3 landscape</span></div>
+              <div><h3>Theme</h3><span>Classic gold</span></div>
+            </div>
+            <p class="muted">Poster setup is not available yet.</p>
+            <button type="button" id="open-editor">Preview editor workspace</button>
+          </section>
+        </div>
+      </section>
+
+      <section id="editor" aria-labelledby="editor-title" hidden>
+        <div class="editor-toolbar">
+          <h1 id="editor-title">Editor workspace</h1>
+          <button type="button" class="secondary" id="back-to-setup">Back to setup</button>
+        </div>
+        <div class="editor-grid">
+          <aside class="editor-panel">
+            <h2>People on the poster</h2>
+            <p class="muted">Open a family tree to see people here.</p>
+          </aside>
+          <div class="workspace">
+            <p class="page-label">A3 landscape · preview</p>
+            <div class="page-preview">
+              <div>
+                <h2>Your poster</h2>
+                <p>The editor and page layout are coming soon.</p>
+              </div>
+            </div>
+          </div>
+          <aside class="editor-panel">
+            <h2>Page</h2>
+            <p>A3 landscape</p>
+            <h2>Theme</h2>
+            <p>Classic gold</p>
+            <h2>Layout</h2>
+            <p class="muted">Editing, saving, and export are not available yet.</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
