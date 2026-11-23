@@ -1,6 +1,6 @@
 # Family Tree Edit & Print
 
-A browser app for creating and editing a print-ready family tree poster. The current version is a static app shell: it previews the setup and editor workspaces, but importing files, editing, saving, and exporting are not implemented yet.
+A browser app for creating and editing a print-ready family tree poster. The current editor preview includes print-page controls, exact standard and custom dimensions, bleed and safe-area guides, and deterministic auto-fit of a fictional 146-person, five-generation sample. Importing files, hand editing, saving, and exporting are not implemented yet.
 
 ![Family Tree Edit & Print screen mock-ups](docs/mockups/overview.png)
 
@@ -10,6 +10,8 @@ visual ideas are in [the mock-ups](docs/mockups/README.md).
 ## Project layout
 
 - `src/main.ts` and `src/style.css`: browser entry point and starter screen.
+- `src/model/page.ts` and `src/layout/compact-tree.ts`: print geometry and compact fitting logic.
+- `src/editor/page-preview.ts`: SVG page, guide, connector, and person rendering.
 - `docs/architecture.md`: planned boundaries for future application features.
 - `docs/mockups/`: early product and chart-style mock-ups.
 - `research/`: product research.

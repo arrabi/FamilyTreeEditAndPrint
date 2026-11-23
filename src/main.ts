@@ -19,7 +19,7 @@ const customWidth = document.querySelector<HTMLInputElement>('#custom-width');
 const customHeight = document.querySelector<HTMLInputElement>('#custom-height');
 const bleedEnabled = document.querySelector<HTMLInputElement>('#bleed-enabled');
 const bleed = document.querySelector<HTMLInputElement>('#bleed');
-const marginInputs = [...document.querySelectorAll<HTMLInputElement>('[data-margin]')];
+const marginInputs = Array.from(document.querySelectorAll<HTMLInputElement>('[data-margin]'));
 const pageError = document.querySelector<HTMLElement>('#page-error');
 const sample = fictionalFiveGenerationTree();
 
@@ -79,7 +79,9 @@ if (setup && editor && openEditor && backToSetup) {
   });
 }
 
-for (const control of document.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[data-page-setting]')) {
+for (const control of Array.from(
+  document.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[data-page-setting]'),
+)) {
   control.addEventListener('input', updatePageControls);
 }
 fitAgain?.addEventListener('click', renderTreePage);

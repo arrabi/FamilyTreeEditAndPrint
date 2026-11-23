@@ -12,8 +12,19 @@ const baseSettings = {
 };
 
 test('uses exact standard paper dimensions and orientation', () => {
-  assert.equal(pageGeometry(baseSettings).trimWidth, 420);
-  assert.equal(pageGeometry(baseSettings).trimHeight, 297);
+  const standards = {
+    A4: [297, 210],
+    A3: [420, 297],
+    A2: [594, 420],
+    A1: [841, 594],
+    Letter: [279.4, 215.9],
+    Tabloid: [431.8, 279.4],
+  };
+  for (const [paperSize, [width, height]] of Object.entries(standards)) {
+    const geometry = pageGeometry({ ...baseSettings, paperSize });
+    assert.equal(geometry.trimWidth, width, paperSize);
+    assert.equal(geometry.trimHeight, height, paperSize);
+  }
 
   const portrait = pageGeometry({ ...baseSettings, orientation: 'portrait' });
   assert.equal(portrait.trimWidth, 297);
