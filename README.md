@@ -1,50 +1,41 @@
-# Family Tree Poster
+# Family Tree Edit & Print
 
-Family Tree Poster is a browser-based tool for turning a genealogy file into a
-print-ready family tree poster that you can arrange and decorate by hand. The
-product direction and open questions are in [SPEC.md](SPEC.md); early visual
-ideas are in [the mock-ups](docs/mockups/README.md).
+A browser app for creating and editing a print-ready family tree poster. The current version is a static app shell: it previews the setup and editor workspaces, but importing files, editing, saving, and exporting are not implemented yet.
 
-![Family Tree Poster screen mock-ups](docs/mockups/overview.png)
+![Family Tree Edit & Print screen mock-ups](docs/mockups/overview.png)
 
-## Project status
-
-This repository currently contains the initial application skeleton, not a
-working tree editor. Import, layout, editing, themes, and export are planned;
-see the [specification](SPEC.md) for scope and milestones.
-
-The planned workflow is to import GEDCOM or JSON family data, choose a chart
-and page, arrange the tree, and export a print-ready PDF, SVG, or PNG.
-
-## Run locally
-
-Requirements: Node.js 22.12 or newer.
-
-```sh
-npm install
-npm run dev
-```
-
-Vite prints a local URL to open in your browser. To check the TypeScript source
-and create a production build, run:
-
-```sh
-npm run typecheck
-npm run build
-```
+The product direction and open questions are in [SPEC.md](SPEC.md). Early
+visual ideas are in [the mock-ups](docs/mockups/README.md).
 
 ## Project layout
 
 - `src/main.ts` and `src/style.css`: browser entry point and starter screen.
 - `docs/architecture.md`: planned boundaries for future application features.
 - `docs/mockups/`: early product and chart-style mock-ups.
-- `SPEC.md`: product goals, planned features, and open technical decisions.
 - `research/`: product research.
 
-Keep the import, layout, editing, theme, and export features separate as they
-are added. Do not put genealogy data in server services: the app is intended to
-run entirely in the browser, without accounts, analytics, or cloud storage.
-Only fictional family data should be committed to this repository.
+## Local development
+
+Use Node.js 22.18 or newer and npm.
+
+```sh
+npm ci
+npm run dev
+```
+
+Open the local URL printed by Vite. Run the checks and build with:
+
+```sh
+npm run lint
+npm run typecheck
+npm test
+npm run build
+npm run preview
+```
+
+The production build is static and is written to `dist/`; it can be served by any static web host. Vite's development and preview servers are only local development tools, not application backends.
+
+The app has no accounts, analytics, or server-side processing. Family data must stay on the user's computer. See [SPEC.md](SPEC.md) for the planned features and [the mockups](docs/mockups/README.md) for the intended screens.
 
 ## License
 

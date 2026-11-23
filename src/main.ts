@@ -1,19 +1,18 @@
-import "./style.css";
+import './style.css';
+import { showScreen } from './screen';
 
-const app = document.querySelector<HTMLDivElement>("#app");
+const setup = document.querySelector<HTMLElement>('#setup');
+const editor = document.querySelector<HTMLElement>('#editor');
+const openEditor = document.querySelector<HTMLButtonElement>('#open-editor');
+const backToSetup = document.querySelector<HTMLButtonElement>('#back-to-setup');
 
-if (!app) {
-  throw new Error("Application root was not found.");
+if (setup && editor && openEditor && backToSetup) {
+  openEditor.addEventListener('click', () => {
+    showScreen('editor', setup, editor);
+    backToSetup.focus();
+  });
+  backToSetup.addEventListener('click', () => {
+    showScreen('setup', setup, editor);
+    openEditor.focus();
+  });
 }
-
-app.innerHTML = `
-  <main class="welcome">
-    <p class="eyebrow">A family tree, made yours</p>
-    <h1>Family Tree Poster</h1>
-    <p class="intro">
-      A thoughtful, hands-on way to turn your family tree into a poster
-      you can print and keep.
-    </p>
-    <p class="status">The application is taking root. More soon.</p>
-  </main>
-`;
