@@ -74,8 +74,17 @@ peopleList?.addEventListener('click', (event) => {
 
 displayText?.addEventListener('input', () => {
   project = setDisplayText(project, selectedId, displayText.value);
-  renderEditor();
-  displayText.focus();
+  if (posterPreview) {
+    posterPreview.innerHTML = renderPosterSvg(project);
+  }
+  const selectedButton = peopleList?.querySelector<HTMLButtonElement>(
+    `[data-person-id="${selectedId}"]`,
+  );
+  if (selectedButton) {
+    selectedButton.textContent = project.presentation[selectedId]?.displayText
+      ?? selectedPerson()?.sourceName
+      ?? '';
+  }
 });
 
 personHidden?.addEventListener('change', () => {

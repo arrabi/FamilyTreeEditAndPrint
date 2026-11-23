@@ -150,6 +150,12 @@ export function renderPosterSvg(project: PosterProject): string {
   });
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" role="img" aria-label="Family tree poster">
+  <style>
+    .paper { fill: #fffdf8; }
+    .connectors path { fill: none; stroke: #9b7951; stroke-width: 5; }
+    .people rect { fill: #edf5f0; stroke: #155d6a; stroke-width: 3; }
+    .people text { direction: rtl; fill: #242321; font: 15px system-ui, sans-serif; text-anchor: middle; }
+  </style>
   <rect class="paper" width="1200" height="850" />
   <g class="connectors">${connectors.join('')}</g>
   <g class="people">${boxes.join('')}</g>

@@ -41,6 +41,7 @@ test('keeps display overrides separate and uses them in exported SVG', () => {
   assert.equal(project.people[1].sourceName, 'Child Name');
   assert.equal(project.presentation.child.displayText, 'Short name');
   assert.match(svg, /Short name/);
+  assert.match(svg, /<style>/);
   assert.doesNotMatch(svg, /Child Name/);
   assert.doesNotMatch(svg, /Other Name/);
   assert.doesNotMatch(svg, /\+\d+ more/);

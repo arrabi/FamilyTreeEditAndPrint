@@ -97,7 +97,7 @@ Sample images in the repo must use fictional names. A sample of the target look 
 ## Technical direction
 
 - UI: no framework, with strict TypeScript and Vite. The initial shell is small enough for native HTML, CSS and DOM APIs; avoiding a runtime framework keeps the static bundle and dependencies small. Revisit this choice if the editor's state and UI complexity warrant it.
-- The current shell previews the setup and editor screens; importing, configuration, editing, saving and export are not implemented yet.
+- The current shell previews the setup and editor screens. Its sample editor supports poster-only visibility and text edits plus SVG export; importing, configuration, saving and other export formats are not implemented yet.
 - Canvas: Konva or Fabric.js (both MIT). Pick after the Arabic spike.
 - Layout: own compact tree layout (tidy-tree style), optionally seeded from Topola's layout.
 - PDF: svg2pdf.js plus jsPDF, or pdfkit; must embed fonts and keep text as text where possible.
