@@ -45,8 +45,26 @@ button:focus-visible, a:focus-visible { outline: 3px solid #2489a0; outline-offs
 .editor-panel h2:first-child { margin-top: 0; }
 .workspace { padding: 2rem; }
 .page-label { color: #67635d; font-size: 0.9rem; }
-.page-preview { background: #fffdf8; border: 1px solid #bcae91; box-shadow: 4px 4px 0 #d5d0c8; aspect-ratio: 420 / 297; display: grid; place-items: center; text-align: center; padding: 1rem; }
-.page-preview p { color: #67635d; }
+.page-preview { background: #fffdf8; border: 1px solid #bcae91; box-shadow: 4px 4px 0 #d5d0c8; aspect-ratio: 420 / 297; overflow: hidden; }
+.page-preview svg { display: block; width: 100%; height: 100%; touch-action: none; user-select: none; }
+.paper { fill: #fffdf8; }
+.poster-frame rect { fill: none; stroke: #b99a50; stroke-width: 2; }
+.box-link { fill: none; stroke: #89744b; stroke-width: 2; }
+.branch { fill: #a57a42; }
+.box-person rect { fill: #fffdf5; stroke: #876c36; stroke-width: 1.6; }
+.person { cursor: grab; }
+.person.dragging { cursor: grabbing; }
+.person text { font: 11px Arial, "Noto Naskh Arabic", sans-serif; fill: #302b23; text-anchor: middle; }
+.leaf-person text { text-anchor: end; }
+.person .secondary-name, .person .spouse { font-size: 8px; }
+.person .spouse { fill: #776b58; }
+.living-leaf { fill: #66864b; }
+.deceased-leaf { fill: #c47b37; }
+.poster-title { font: 23px Arial, sans-serif; fill: #302b23; }
+.generation-count, .legend text { font: 9px Arial, sans-serif; fill: #6d6253; }
+.field { display: grid; gap: 0.4rem; font-weight: 600; }
+.field select { width: 100%; padding: 0.6rem; border: 1px solid #c9c1b4; border-radius: 0.4rem; background: white; font: inherit; }
+.panel-button { width: 100%; margin-top: 1rem; }
 @media (max-width: 800px) {
   .app-header { align-items: flex-start; flex-direction: column; padding: 1rem; }
   .setup-grid, .editor-grid { grid-template-columns: 1fr; }

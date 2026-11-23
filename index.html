@@ -34,7 +34,7 @@
               <div><h3>Paper</h3><span>A3 landscape</span></div>
               <div><h3>Theme</h3><span>Classic gold</span></div>
             </div>
-            <p class="muted">Poster setup is not available yet.</p>
+            <p class="muted">A fictional bilingual sample is ready to explore.</p>
             <button type="button" id="open-editor">Preview editor workspace</button>
           </section>
         </div>
@@ -48,16 +48,20 @@
         <div class="editor-grid">
           <aside class="editor-panel">
             <h2>People on the poster</h2>
-            <p class="muted">Open a family tree to see people here.</p>
+            <p class="muted">15 fictional people across five generations. Drag a person to move its branch.</p>
+            <h2>Chart style</h2>
+            <label class="field">
+              <span>Drawing style</span>
+              <select id="chart-style">
+                <option value="classic">Classic boxes</option>
+                <option value="leaf">Leaf tree</option>
+              </select>
+            </label>
+            <button type="button" class="secondary panel-button" id="reset-positions">Reset positions</button>
           </aside>
           <div class="workspace">
             <p class="page-label">A3 landscape · preview</p>
-            <div class="page-preview">
-              <div>
-                <h2>Your poster</h2>
-                <p>The editor and page layout are coming soon.</p>
-              </div>
-            </div>
+            <div class="page-preview" id="poster"></div>
           </div>
           <aside class="editor-panel">
             <h2>Page</h2>
@@ -65,7 +69,8 @@
             <h2>Theme</h2>
             <p>Classic gold</p>
             <h2>Layout</h2>
-            <p class="muted">Editing, saving, and export are not available yet.</p>
+            <p class="muted">Chart style and page theme are separate. Hand offsets carry between styles.</p>
+            <button type="button" class="panel-button" id="export-svg">Export vector SVG</button>
           </aside>
         </div>
       </section>

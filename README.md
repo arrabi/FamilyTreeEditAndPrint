@@ -1,6 +1,11 @@
 # Family Tree Edit & Print
 
-A browser app for creating and editing a print-ready family tree poster. The current version is a static app shell: it previews the setup and editor workspaces, but importing files, editing, saving, and exporting are not implemented yet.
+A browser app for creating and editing a print-ready family tree poster. The
+current editor preview includes classic box and Leaf Tree chart styles for a
+fictional, bilingual five-generation sample. People and their descendant
+branches can be dragged, style changes preserve hand offsets, and the artwork
+can be exported as vector SVG. Importing, saving, PDF, and PNG are not
+implemented yet.
 
 ![Family Tree Edit & Print screen mock-ups](docs/mockups/overview.png)
 
@@ -9,7 +14,8 @@ visual ideas are in [the mock-ups](docs/mockups/README.md).
 
 ## Project layout
 
-- `src/main.ts` and `src/style.css`: browser entry point and starter screen.
+- `src/main.ts` and `src/style.css`: browser entry point and editor interactions.
+- `src/chart.ts`: chart model, automatic layouts, SVG rendering, and sample data.
 - `docs/architecture.md`: planned boundaries for future application features.
 - `docs/mockups/`: early product and chart-style mock-ups.
 - `research/`: product research.
